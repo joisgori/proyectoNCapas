@@ -1,10 +1,14 @@
 package com.uca.capas.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,6 +31,28 @@ public class Movie {
 	@Column(name="duracion")
 	private String pDuration;
 	
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<Actor> actor;
+	
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<TipoPelicula> tipopelicula;
+	
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<Genero> genero;
+	
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<Idiomas> idiomas;
+	
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<Horario> horario;
+	
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<SxP> salaxpelicula;
+		
+	@OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+	private List<Reserva> reserva;
+	
+	
 	public Movie(Integer cMovie, String pName, String pImage, String pDuration) {
 		super();
 		this.cMovie = cMovie;
@@ -35,9 +61,6 @@ public class Movie {
 		this.pDuration = pDuration;
 	}
 	
-	
-	
-
 	public Integer getcMovie() {
 		return cMovie;
 	}

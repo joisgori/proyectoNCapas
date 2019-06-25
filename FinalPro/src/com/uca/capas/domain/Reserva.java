@@ -17,5 +17,17 @@ import javax.persistence.Table;
 
 public class Reserva {
 	
+	@Id
+	@GeneratedValue(generator="reserva_id_reserva_seq",strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="reserva_id_reserva_seq",sequenceName="public.reserva_id_reserva_seq",allocationSize = 1)
+	
+	@Column(name="id_reserva")
+	private Integer cReserva;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_pelicula")
+	private Movie pelicula;
+	
+	
 
 }
